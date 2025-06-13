@@ -4,7 +4,7 @@ title: My Data Science Blog
 ---
 
 <section class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100 dark:border-slate-700">
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-6 text-center">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-6 text-center dark:text-teal-400">
         From Oceans to Algorithms: My Data Science Blog
     </h1>
 
@@ -12,12 +12,12 @@ title: My Data Science Blog
         {% if site.posts.size > 0 %}
             {% for post in site.posts reversed %}
                 <article class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg border border-blue-100 dark:border-slate-700">
-                    <h2 class="text-3xl font-bold text-blue-900 mb-2">
-                        <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-2 dark:text-blue-200">
+                        <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline dark:text-teal-400">
                             {{ post.title }}
                         </a>
                     </h2>
-                    <p class="text-sm text-gray-900 dark:text-gray-100 mb-4">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
                         Published: {{ post.date | date: "%B %d, %Y" }}
                         {% if post.author %}
                         by {{ post.author }}
@@ -25,14 +25,14 @@ title: My Data Science Blog
                     </p>
                     <div class="blog-content prose max-w-none">
                         {{ post.excerpt | default: post.content | markdownify | strip_html | truncatewords: 50 }}
-                        <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline inline-block mt-2">Read more &rarr;</a>
+                        <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline inline-block mt-2 dark:text-teal-400">Read more &rarr;</a>
                     </div>
                 </article>
             {% endfor %}
         {% else %}
-            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100 dark:border-slate-700">
-                <h2 class="text-2xl font-bold text-blue-800 mb-2">No Blog Posts Yet</h2>
-                <p class="text-gray-600">It seems the ocean of data is still waiting for its first entries. Start by adding markdown files to your `_posts` directory!</p>
+            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100 dark:bg-slate-700 dark:border-slate-600">
+                <h2 class="text-2xl font-bold text-blue-800 mb-2 dark:text-blue-200">No Blog Posts Yet</h2>
+                <p class="text-gray-600 dark:text-gray-400">It seems the ocean of data is still waiting for its first entries. Start by adding markdown files to your `_posts` directory!</p>
             </div>
         {% endif %}
     </div>
