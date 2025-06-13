@@ -10,7 +10,7 @@ title: My Data Science Blog
 
     <div id="blog-posts-container" class="grid grid-cols-1 gap-8">
         {% if site.posts.size > 0 %}
-            {% for post in site.posts reversed %} {# 'reversed' to show newest first #}
+            {% for post in site.posts reversed %}
                 <article class="bg-white p-6 rounded-xl shadow-lg border border-blue-100">
                     <h2 class="text-3xl font-bold text-blue-900 mb-2">
                         <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline">
@@ -24,7 +24,6 @@ title: My Data Science Blog
                         {% endif %}
                     </p>
                     <div class="blog-content prose max-w-none">
-                        {# Display an excerpt or the full content, depending on preference #}
                         {{ post.excerpt | default: post.content | markdownify | strip_html | truncatewords: 50 }}
                         <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline inline-block mt-2">Read more &rarr;</a>
                     </div>
