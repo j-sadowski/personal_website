@@ -1,134 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Sadowski - Publications</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #8babc1; /* Very light blue/sky-50 for subtle marine feel */
-            color: #334155; /* Dark gray text */
-        }
-    </style>
-</head>
-<body class="flex flex-col min-h-screen">
-    <!-- Header/Navigation Bar - Consistent with landing page -->
-    <header class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
-            <div class="text-2xl font-bold text-blue-900 mb-4 sm:mb-0">
-                Jason Sadowski
+---
+layout: default
+title: My Publications
+---
+
+<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-6 text-center">
+        My Publications: Deep Dives and Data Discoveries
+    </h1>
+
+    <div id="publications-container" class="grid grid-cols-1 gap-8">
+        {% if site.data.publications.size > 0 %}
+            {% for pub in site.data.publications reversed %} {# 'reversed' to show newest first if sorted by year in YAML #}
+                <article class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+                    <h2 class="text-2xl font-bold text-blue-900 mb-2">
+                        <a href="{{ pub.pdf | relative_url }}" target="_blank" class="text-teal-600 hover:underline">
+                            {{ pub.title }}
+                        </a>
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-2">Authors: {{ pub.authors }}</p>
+                    <p class="text-sm text-gray-500 mb-4">{{ pub.journal }} ({{ pub.year }})</p>
+                    <p class="text-gray-700 leading-relaxed">
+                        {{ pub.abstract }}
+                    </p>
+                    {% if pub.pdf %}
+                    <a href="{{ pub.pdf | relative_url }}" target="_blank" class="inline-flex items-center px-4 py-2 mt-4 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0113 3.414L16.586 7A2 2 0 0118 8.414V16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 10a1 1 0 01-1-1V9h6a1 1 0 011 1v4a1 1 0 01-1 1H7a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                        View PDF
+                    </a>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        {% else %}
+            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100">
+                <h2 class="text-2xl font-bold text-blue-800 mb-2">No Publications Yet</h2>
+                <p class="text-gray-600">Start by adding entries to your `_data/publications.yml` file!</p>
             </div>
-            <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-4">
-                <a href="index.html" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
-                    About
-                </a>
-                <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/SadowskiResume.pdf" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
-                    Resume
-                </a>
-                <a href="blog.html" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
-                    Blog
-                </a>
-                <a href="publications.html" class="px-4 py-2 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-                    Publications
-                </a>
-            </div>
-        </nav>
-    </header>
+        {% endif %}
 
-    <!-- Main Content - Publications Section -->
-    <main class="flex-grow container mx-auto px-4 py-8 sm:py-12">
-        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-6 text-center">
-                My Publications: Deep Dives and Data Discoveries
-            </h1>
-
-            <div id="publications-container" class="grid grid-cols-1 gap-8">
-                <!-- Publication 0 -->
-                <article class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-2">
-                        <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/Hollarsmith_etal_2019_LO.pdf" target="_blank" class="text-teal-600 hover:underline">
-                            Effects of seasonal upwelling and runoff on water chemistry and growth and survival of native and commercial oysters
-                        </a>
-                    </h2>
-                    <p class="text-sm text-gray-500 mb-2">Authors: Jordan A. Hollarsmith, Jason S. Sadowski, Manon M. M. Picard, Brian Cheng, James Farlin, Ann Russell, Edwin D. Grosholz</p>
-                    <p class="text-sm text-gray-500 mb-4">Limnology and Oceanography, Vol. 65, pp. 224-235 (2020)</p>
-                    <p class="text-gray-700 leading-relaxed">
-                        Analyzes spatiotemporal variability and uses that to evaluate the impact of climate change on commercial oysters.
-                    </p>
-                    <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/Hollarsmith_etal_2019_LO.pdf" target="_blank" class="inline-flex items-center px-4 py-2 mt-4 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0113 3.414L16.586 7A2 2 0 0118 8.414V16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 10a1 1 0 01-1-1V9h6a1 1 0 011 1v4a1 1 0 01-1 1H7a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        View PDF
-                    </a>
-                </article>
-
-                <!-- Publication 1 -->
-                <article class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-2">
-                        <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/SadowskiGrosholz_2019.pdf" target="_blank" class="text-teal-600 hover:underline">
-                            Predator foraging mode controls the effect of antipredator behavior in a tritrophic model
-                        </a>
-                    </h2>
-                    <p class="text-sm text-gray-500 mb-2">Authors: Jason S. Sadowski, Edwin D. Grosholz</p>
-                    <p class="text-sm text-gray-500 mb-4">Theoretical Ecology, Vol. 12, pp. 531-544 (2019)</p>
-                    <p class="text-gray-700 leading-relaxed">
-                        A novel approach to tritrophic food chains that incorporates predator velocity as a proxy for either ambush-type or hunting-type predators.  
-                    </p>
-                    <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/SadowskiGrosholz_2019.pdf" target="_blank" class="inline-flex items-center px-4 py-2 mt-4 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0113 3.414L16.586 7A2 2 0 0118 8.414V16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 10a1 1 0 01-1-1V9h6a1 1 0 011 1v4a1 1 0 01-1 1H7a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        View PDF
-                    </a>
-                </article>
-
-                <!-- Publication 2 -->
-                <article class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-2">
-                        <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/Sadowski_etal_2018_MarEco.pdf" target="_blank" class="text-teal-600 hover:underline">
-                            Temperature‐induced range expansion of a subtropical crab along the California coast
-                        </a>
-                    </h2>
-                    <p class="text-sm text-gray-500 mb-2">Authors: Jason S. Sadowski, Julie A. Gonzalez, Steve I. Lonhart, Rikke Jeppesen, Tracy M. Grimes, Edwin D. Grosholz</p>
-                    <p class="text-sm text-gray-500 mb-4">Marine Ecology, Vol. 39, Issue 5, e12528, (2018)</p>
-                    <p class="text-gray-700 leading-relaxed">
-                        Documenation of a northern range expansion caused by the Warm Blob of 2016.
-                    </p>
-                    <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/Sadowski_etal_2018_MarEco.pdf" target="_blank" class="inline-flex items-center px-4 py-2 mt-4 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0113 3.414L16.586 7A2 2 0 0118 8.414V16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 10a1 1 0 01-1-1V9h6a1 1 0 011 1v4a1 1 0 01-1 1H7a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        View PDF
-                    </a>
-                </article>
-
-                 <!-- Publication 3 -->
-                <article class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-2">
-                        <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/Cassey_etal_2018_PlosBio.pdf" target="_blank" class="text-teal-600 hover:underline">
-                            Dissecting the null model for biological invasions: A meta-analysis of the propagule pressure effect.
-                        </a>
-                    </h2>
-                    <p class="text-sm text-gray-500 mb-2">Authors: Phillip Cassey, Steven Delean, Julie L. Lockwood, Jason S. Sadowski, Tim M. Blackburn</p>
-                    <p class="text-sm text-gray-500 mb-4">PLoS Biol, Vol. 16, Issue 4, e2005987, (2018)</p>
-                    <p class="text-gray-700 leading-relaxed">
-                        A literature review and meta-analysis investigating how the initial population size impacts invasive species establishment.
-                    </p>
-                    <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/Cassey_etal_2018_PlosBio.pdf" target="_blank" class="inline-flex items-center px-4 py-2 mt-4 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0113 3.414L16.586 7A2 2 0 0118 8.414V16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 10a1 1 0 01-1-1V9h6a1 1 0 011 1v4a1 1 0 01-1 1H7a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        View PDF
-                    </a>
-                </article>
-
-                <!-- Add more publications as needed -->
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer - Consistent with landing page -->
-    <footer class="bg-teal-900 text-white p-6 mt-8">
-        <div class="container mx-auto text-center text-sm">
-            &copy; 2025 Jason Sadowski. All rights reserved. | Navigating the currents of data and discovery.
+        <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100">
+            <h2 class="text-2xl font-bold text-blue-800 mb-2">Looking for more?</h2>
+            <p class="text-gray-600">This page showcases a selection of my work. Feel free to explore my full academic profile on platforms like Google Scholar or ResearchGate.</p>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+</section>
