@@ -3,7 +3,7 @@ layout: default
 title: My Publications
 ---
 
-<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100">
+<section class="bg-white p-6 dark:bg-slate-900 sm:p-8 rounded-xl shadow-lg border border-blue-100 dark:border-slate-700">
     <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-6 text-center">
         My Publications: Deep Dives and Data Discoveries
     </h1>
@@ -11,14 +11,14 @@ title: My Publications
     <div id="publications-container" class="grid grid-cols-1 gap-8">
         {% if site.data.publications.size > 0 %}
             {% for pub in site.data.publications %}
-                <article class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+                <article class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-md border border-blue-100 dark:border-slate-700">
                     <h2 class="text-2xl font-bold text-blue-900 mb-2">
                         <a href="{{ pub.pdf | relative_url }}" target="_blank" class="text-teal-600 hover:underline">
                             {{ pub.title }}
                         </a>
                     </h2>
-                    <p class="text-sm text-gray-500 mb-2">Authors: {{ pub.authors }}</p>
-                    <p class="text-sm text-gray-500 mb-4">{{ pub.journal }} ({{ pub.year }})</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-100 mb-2">Authors: {{ pub.authors }}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-100 mb-4">{{ pub.journal }} ({{ pub.year }})</p>
                     <p class="text-gray-700 leading-relaxed">
                         {{ pub.abstract }}
                     </p>
@@ -31,9 +31,9 @@ title: My Publications
                 </article>
             {% endfor %}
         {% else %}
-            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100">
+            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100 dark:border-slate-700">
                 <h2 class="text-2xl font-bold text-blue-800 mb-2">No Publications Yet</h2>
-                <p class="text-gray-600">Start by adding entries to your `_data/publications.yml` file!</p>
+                <p class="text-gray-600 dark:text-gray-100">Start by adding entries to your `_data/publications.yml` file!</p>
             </div>
         {% endif %}
     </div>
