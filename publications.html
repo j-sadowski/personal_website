@@ -3,7 +3,7 @@ layout: default
 title: My Publications
 ---
 
-<section class="bg-slate-900 p-6 sm:p-8 rounded-xl shadow-lg border border-slate-700">
+<section class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg border border-slate-700">
     <h1 class="text-4xl sm:text-5xl font-extrabold mb-6 text-center text-teal-400">
         My Publications: Deep Dives and Data Discoveries
     </h1>
@@ -11,7 +11,7 @@ title: My Publications
     <div id="publications-container" class="grid grid-cols-1 gap-8">
         {% if site.data.publications.size > 0 %}
             {% for pub in site.data.publications %}
-                <article class="bg-slate-900 p-6 rounded-xl shadow-md border border-slate-700">
+                <article class="bg-slate-700 p-6 rounded-xl shadow-md border border-slate-600">
                     <h2 class="text-2xl font-bold mb-2 text-blue-200">
                         <a href="{{ pub.pdf | relative_url }}" target="_blank" class="hover:underline text-teal-400">
                             {{ pub.title }}
