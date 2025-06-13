@@ -74,6 +74,20 @@
         .blog-content blockquote {
             @apply border-l-4 border-teal-500 pl-4 py-2 italic text-gray-600 dark:border-teal-400 dark:text-gray-400;
         }
+
+        /* NEW: Explicit Dark Mode Styles for Publication Boxes */
+        html.dark .publications-section {
+            background-color: #0F172A; /* Tailwind slate-900 equivalent */
+            border-color: #334155;    /* Tailwind slate-700 equivalent */
+        }
+        html.dark .publication-article {
+            background-color: #0F172A; /* Tailwind slate-900 equivalent */
+            border-color: #334155;    /* Tailwind slate-700 equivalent */
+        }
+        html.dark .no-publications-box { /* For the "No Publications Yet" div */
+            background-color: #334155; /* Tailwind slate-700 equivalent */
+            border-color: #475569;    /* Tailwind slate-600 equivalent */
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-blue-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200">
