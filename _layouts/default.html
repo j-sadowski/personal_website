@@ -18,15 +18,10 @@
         /* Base styles for light mode */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #85afca;
-            color: #334155; /* Dark gray text */
+            /* REMOVED: background-color and color, now handled by Tailwind classes on <body> */
         }
 
         /* Dark mode specific styles */
-        html.dark body {
-            background-color: #0F172A; /* Slate 900 for dark background */
-            color: #CBD5E1; /* Light gray text */
-        }
         html.dark header {
             background-color: #1E293B; /* Slate 800 for dark header */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
