@@ -55,7 +55,7 @@ title: Jason Sadowski - Data Science Leadership
 <!-- Image Gallery Section -->
 <section class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg border border-slate-700">
     <h2 class="text-3xl font-bold mb-6 text-center text-blue-200">My Journey in Pictures</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {% for photo in site.data.photos %}
         <div class="relative overflow-hidden rounded-xl shadow-md group">
             <img src="{{ '/assets/photos/' | append: photo.src | relative_url }}"
