@@ -1,9 +1,9 @@
 title: Jason Sadowski - Data Science Leadership
 description: Driving Innovation at the Intersection of Data and Strategy.
 baseurl: "/personal_website"
-url: "https://j-sadowski.github.io" # e.g., https://yourusername.github.io or your custom domain
+url: "https://j-sadowski.github.io"
 
-theme: minima # You can choose a different theme or remove if building from scratch
+theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap

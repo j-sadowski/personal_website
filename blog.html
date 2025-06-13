@@ -3,7 +3,7 @@ layout: default
 title: My Data Science Blog
 ---
 
-<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100">
+<section class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100 dark:border-slate-700">
     <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-6 text-center">
         From Oceans to Algorithms: My Data Science Blog
     </h1>
@@ -11,13 +11,13 @@ title: My Data Science Blog
     <div id="blog-posts-container" class="grid grid-cols-1 gap-8">
         {% if site.posts.size > 0 %}
             {% for post in site.posts reversed %}
-                <article class="bg-white p-6 rounded-xl shadow-lg border border-blue-100">
+                <article class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg border border-blue-100 dark:border-slate-700">
                     <h2 class="text-3xl font-bold text-blue-900 mb-2">
                         <a href="{{ post.url | relative_url }}" class="text-teal-600 hover:underline">
                             {{ post.title }}
                         </a>
                     </h2>
-                    <p class="text-sm text-gray-500 mb-4">
+                    <p class="text-sm text-gray-900 dark:text-gray-100 mb-4">
                         Published: {{ post.date | date: "%B %d, %Y" }}
                         {% if post.author %}
                         by {{ post.author }}
@@ -30,7 +30,7 @@ title: My Data Science Blog
                 </article>
             {% endfor %}
         {% else %}
-            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100">
+            <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center border border-blue-100 dark:border-slate-700">
                 <h2 class="text-2xl font-bold text-blue-800 mb-2">No Blog Posts Yet</h2>
                 <p class="text-gray-600">It seems the ocean of data is still waiting for its first entries. Start by adding markdown files to your `_posts` directory!</p>
             </div>
