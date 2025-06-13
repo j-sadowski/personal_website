@@ -1,15 +1,13 @@
-title: Your Name - From Oceans to Algorithms
-description: Former Marine Ecologist turned Data Scientist
-baseurl: "/your-repository-name" # e.g., /my-personal-site if your repo is my-personal-site. Leave empty if using a custom domain.
-url: "https://yourusername.github.io" # e.g., https://yourusername.github.io or your custom domain
+title: Jason Sadowski - Data Science Leadership
+description: Driving Innovation at the Intersection of Data and Strategy.
+baseurl: "/personal_website"
+url: "https://j-sadowski.github.io" # e.g., https://yourusername.github.io or your custom domain
 
-# Theme and Plugins (optional but good practice)
 theme: minima # You can choose a different theme or remove if building from scratch
 plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Markdown settings (optional, defaults are usually fine)
 markdown: kramdown
 highlighter: rouge
 kramdown:
