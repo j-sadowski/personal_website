@@ -1,0 +1,25 @@
+title: Jason Sadowski - Data Science Leadership
+description: Driving Innovation at the Intersection of Data and Strategy.
+baseurl: "/personal_website"
+url: "https://j-sadowski.github.io" # e.g., https://yourusername.github.io or your custom domain
+
+theme: minima # You can choose a different theme or remove if building from scratch
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM # GitHub Flavored Markdown
+  syntax_highlighter: rouge
+
+# Exclude unneeded files from site generation
+exclude:
+  - README.md
+  - LICENSE.md
+  - Gemfile
+  - Gemfile.lock
+  - .sass-cache/
+  - .jekyll-cache/
+  - node_modules/ # If you use npm for Tailwind compilation

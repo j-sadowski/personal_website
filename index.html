@@ -1,109 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Sadowski - Data Science Leadership</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #8babc1; /* Very light blue/sky-50 for subtle marine feel */
-            color: #334155; /* Dark gray text */
-        }
-    </style>
-</head>
-<body class="flex flex-col min-h-screen">
-    <!-- Header/Navigation Bar -->
-    <header class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
-            <div class="text-2xl font-bold text-blue-900 mb-4 sm:mb-0">
-                Jason Sadowski
-            </div>
-            <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-4">
-                <a href="index.html" class="px-4 py-2 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-                    About
-                </a>
-                <a href="https://j-sadowski.github.io/personal_website/assets/pdf_files/SadowskiResume.pdf" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
-                    Resume
-                </a>
-                <a href="blog.html" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
-                    Blog
-                </a>
-                <a href="publications.html" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
-                    Publications
-                </a>
-            </div>
-        </nav>
-    </header>
+---
+layout: default
+title: Your Name - From Oceans to Algorithms
+---
 
-    <!-- Main Content - About Me Section -->
-    <main class="flex-grow container mx-auto px-4 py-8 sm:py-12">
-        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100 mb-8">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-4 text-center">
-                Hello, I'm <span class="text-teal-600">Jason Sadowski</span>
-            </h1>
-            <p class="text-xl text-gray-600 mb-6 text-center max-w-2xl mx-auto">
-                <span class="font-semibold">Driving Innovation at the Intersection of Data and Strategy.</span>
+<!-- Main Content - About Me Section -->
+<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100 mb-8">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-4 text-center">
+        Hello, I'm <span class="text-teal-600">Jason Sadowski</span>
+    </h1>
+    <p class="text-xl text-gray-600 mb-6 text-center max-w-2xl mx-auto">
+        <span class="font-semibold">Driving Innovation at the Intersection of Data and Strategy.</span>
+    </p>
+
+    <div class="prose lg:prose-lg max-w-3xl mx-auto text-gray-700 leading-relaxed">
+        <p class="mb-4">
+            Hello world
+        </p>
+    </div>
+</section>
+
+
+<!-- New: Connect with Me Section -->
+<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100 mb-8 flex flex-col md:flex-row items-center justify-center gap-8">
+    <div class="flex-shrink-0">
+        <img src="https://placehold.co/200x200/C1E9F7/005A7F?text=Your+Headshot"
+                alt="Your Headshot"
+                class="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-teal-600"
+                onerror="this.onerror=null;this.src='https://placehold.co/200x200/D1E0F5/3B82F6?text=Image+Error';"
+        >
+    </div>
+    <div class="text-center md:text-left max-w-md">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Connect with Me</h2>
+        <p class="text-lg text-gray-700 mb-4">
+            I'm always open to discussing new ideas, collaborations, or opportunities in data science and environmental research.
+        </p>
+        <div class="space-y-3">
+            <p class="flex items-center justify-center md:justify-start text-gray-700">
+                <svg class="w-6 h-6 mr-3 text-teal-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                Email: <a href="mailto:your.email@example.com" class="text-teal-600 hover:underline ml-1">your.email@example.com</a>
             </p>
-
-            <div class="prose lg:prose-lg max-w-3xl mx-auto text-gray-700 leading-relaxed">
-                <p class="mb-4">
-                    Hello world
-                </p>
-            </div>
-        </section>
-
-        <!-- Image Gallery Section -->
-        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100">
-            <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">My Journey in Pictures</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Image 1 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md group">
-                    <img src="https://placehold.co/600x400/C1E9F7/005A7F?text=Ocean+Research"
-                         alt="Oceanic Fieldwork"
-                         class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105"
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E0F5/3B82F6?text=Image+Loading+Error';"
-                    >
-                    <div class="absolute inset-0 bg-blue-900 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-white text-lg font-semibold text-center p-4">Early days in marine ecology research.</p>
-                    </div>
-                </div>
-
-                <!-- Image 2 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md group">
-                    <img src="https://placehold.co/600x400/C1E9F7/005A7F?text=Data+Science+Lab"
-                         alt="Data Science Lab"
-                         class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105"
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E0F5/3B82F6?text=Image+Loading+Error';"
-                    >
-                    <div class="absolute inset-0 bg-blue-900 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-white text-lg font-semibold text-center p-4">Applying analytical skills in data science.</p>
-                    </div>
-                </div>
-
-                <!-- Image 3 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md group">
-                    <img src="https://placehold.co/600x400/C1E9F7/005A7F?text=Leadership+Session"
-                         alt="Leadership Session"
-                         class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105"
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E0F5/3B82F6?text=Image+Loading+Error';"
-                    >
-                    <div class="absolute inset-0 bg-blue-900 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-white text-lg font-semibold text-center p-4">Leading and inspiring data-driven initiatives.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-teal-900 text-white p-6 mt-8">
-        <div class="container mx-auto text-center text-sm">
-            &copy; 2025 Jason Sadowski. All rights reserved. | Built with purpose and data.
+            <p class="flex items-center justify-center md:justify-start text-gray-700">
+                <svg class="w-6 h-6 mr-3 text-teal-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.3 3.414A9.954 9.954 0 0010 0C4.477 0 0 4.477 0 10c0 4.935 3.633 9.034 8.397 9.882V12.75H6.25V9.5h2.147V7.086c0-2.115 1.29-3.277 3.19-3.277.909 0 1.68.067 1.906.096v2.548h-1.503c-.911 0-1.09.432-1.09 1.066V9.5h2.404L13.5 12.75h-1.503V19.882C16.367 19.034 20 14.935 20 10c0-5.523-4.477-10-10-10S3.7 4.477 3.7 10c0 4.935 3.633 9.034 8.397 9.882V12.75H6.25V9.5h2.147V7.086c0-2.115 1.29-3.277 3.19-3.277.909 0 1.68.067 1.906.096v2.548h-1.503c-.911 0-1.09.432-1.09 1.066V9.5h2.404L13.5 12.75h-1.503V19.882C16.367 19.034 20 14.935 20 10z" clip-rule="evenodd"></path></svg>
+                LinkedIn: <a href="https://linkedin.com/in/jason-sadowski" target="_blank" class="text-teal-600 hover:underline ml-1">linkedin.com/in/yourprofile</a>
+            </p>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+</section>
+
+
+<!-- Image Gallery Section -->
+<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">My Journey in Pictures</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Image 1 -->
+        <div class="relative overflow-hidden rounded-xl shadow-md group">
+            <img src="https://placehold.co/600x400/C1E9F7/005A7F?text=Ocean+Research"
+                    alt="Oceanic Fieldwork"
+                    class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E0F5/3B82F6?text=Image+Loading+Error';"
+            >
+            <div class="absolute inset-0 bg-blue-900 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p class="text-white text-lg font-semibold text-center p-4">Early days in marine ecology research.</p>
+            </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="relative overflow-hidden rounded-xl shadow-md group">
+            <img src="https://placehold.co/600x400/C1E9F7/005A7F?text=Data+Science+Lab"
+                    alt="Data Science Lab"
+                    class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E0F5/3B82F6?text=Image+Loading+Error';"
+            >
+            <div class="absolute inset-0 bg-blue-900 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p class="text-white text-lg font-semibold text-center p-4">Applying analytical skills in data science.</p>
+            </div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="relative overflow-hidden rounded-xl shadow-md group">
+            <img src="https://placehold.co/600x400/C1E9F7/005A7F?text=Leadership+Session"
+                    alt="Leadership Session"
+                    class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E0F5/3B82F6?text=Image+Loading+Error';"
+            >
+            <div class="absolute inset-0 bg-blue-900 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p class="text-white text-lg font-semibold text-center p-4">Leading and inspiring data-driven initiatives.</p>
+            </div>
+        </div>
+    </div>
+</section>
