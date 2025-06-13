@@ -1,6 +1,6 @@
-<header class="bg-white shadow-md p-4 sticky top-0 z-50">
+<header class="bg-slate-800 shadow-md p-4 sticky top-0 z-50">
     <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
-        <div class="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4 sm:mb-0">
+        <div class="text-2xl font-bold text-blue-200 mb-4 sm:mb-0">
             {{ site.title }}
         </div>
         <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-4">
@@ -16,33 +16,6 @@
             <a href="{{ site.baseurl }}/publications.html" class="px-4 py-2 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition duration-300 shadow-md">
                 Publications
             </a>
-
-            <!-- Dark Mode Slide Toggle -->
-            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in ml-4">
-                <input type="checkbox" name="toggle" id="theme-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition duration-200 ease-in dark:bg-slate-300"/>
-                <label for="theme-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-blue-300 cursor-pointer dark:bg-slate-600"></label>
-            </div>
-            <span class="text-sm text-gray-700 dark:text-gray-300">Dark Mode</span>
-
-            <style>
-                .toggle-checkbox:checked {
-                    right: 0;
-                    border-color: #3B82F6; /* Tailwind blue-500 */
-                }
-                .toggle-checkbox:checked + .toggle-label {
-                    background-color: #3B82F6; /* Tailwind blue-500 */
-                }
-
-                /* Dark mode styles for the toggle itself */
-                html.dark .toggle-checkbox {
-                    border-color: #64748B; /* Tailwind slate-500 */
-                }
-                html.dark .toggle-checkbox:checked {
-                    border-color: #6EE7B7; /* Tailwind emerald-300 */
-                }
-                html.dark .toggle-checkbox:checked + .toggle-label {
-                    background-color: #6EE7B7; /* Tailwind emerald-300 */
-                }
             </style>
         </div>
     </nav>
