@@ -6,7 +6,6 @@ categories: [data-science]
 author: Jason Sadowski
 ---
 
-# Looking Beyond Feature Importance
 ## How to use Partial Dependence Plots in Python
 
 Many articles discuss how to use feature importance for selecting features and analyzing your machine learning model. What happens when you have selected your important features and rerun your model? Feature importance is incredibly useful for understanding what is driving our model, but it does not tell us how that feature is related to the model predictions. This article covers how to step beyond feature importance and use plotting methods to gain a deeper understanding of how the features in your models are driving model predictions.
@@ -74,7 +73,7 @@ perm_importance = permutation_importance(regr, X_train, Y_train)
 
 Once I created the model I extracted the feature importances. The gist above shows how you can do this with two different methods, either the default .feature_importances_ method from sklearn or by using the permutation_importance function in sklearn. I’ve plotted the results from the permutation_importance function below.
 
-![The height of the bars represent the mean feature importance and the error bars are one standard deviation from the mean for each feature.](pdp.png)
+![The height of the bars represent the mean feature importance and the error bars are one standard deviation from the mean for each feature.](2020-08-29_figures/pdp.png)
 
 Based off of the permutation feature importance, the features RM, DIS, and LSTAT outperform the other features by almost an order of magnitude! The permutation feature importance also gives us an estimate of the variance in feature importance. Based on a quick look at the error bars, RM and LSTAT probably have a statistically indistinguishable effect on the final model, with DIS clearly the next important. What do these features represent?
 
@@ -112,7 +111,7 @@ The reduced model predicts the test set well enough for our analysis, with an R�
 
 If you examine the feature importance here you see a similar pattern as before with RM at the highest followed by LSTAT and then DIS. Again, the variance in feature importance for RM and LSTAT appears as though the effect of the two features are not statistically distinct.
 
-![The height of the bars represent the mean feature importance and the error bars are one standard deviation from the mean for each feature.](pdp-1.png)
+![The height of the bars represent the mean feature importance and the error bars are one standard deviation from the mean for each feature.](2020-08-29_figures/pdp-1.png)
 
 #### Construct the Partial Dependent Plots
 Sklearn has a quick and dirty function that will plot all of your features for you, or you can do the run a function to get only the partial dependencies without plotting them. In the code snippet below, I have both sklearn methods and a quick function that illustrates what’s going on under the hood.
@@ -156,10 +155,10 @@ Two things to note about the sklearn functions. The default grid in the sklearn 
 
 Let’s examine what our partial dependence patterns look like in our model. Each of the plots will have a line representing the partial dependence (the mean response of the model when all feature values are set to one value) and a [rug plot](https://en.wikipedia.org/wiki/Rug_plot) along the bottom.
 
-![alt text](pdp-2.png)
+![alt text](2020-08-29_figures/pdp-2.png)
 The distance to the Boston employment centers only has an effect on housing value when distances are very low. Again, we can speculate on the cause. One potential explanation of this pattern could be that being close to employment centers is only valuable when the employee could walk, bike, or take public transportation to their workplace. Beyond a very short distance, cars could make all distances equally attractive. In other words, the lack of relationship at higher distances is likely due to other factors swamping out any effect of distance on price.
 
-![alt text](pdp-3.png)
+![alt text](2020-08-29_figures/pdp-3.png)
 As the percent lower status increases housing value declines until about 20% is reached. This effect likely indicates a floor in the Boston housing market where the property value is not likely to decline past a certain value given other factors.
 
 ****
@@ -168,17 +167,17 @@ So far we have looked at the partial dependence of each feature separately. We c
 
 The one dimensional PDPs assume independence between the features; therefore, correlated features could lead to spurious patterns in the PDP. If two features are correlated, then we could create data points in our PDP algorithm that are very unlikely. Take a look at the plots below. What you can see here is that the RM and LSTAT features are negatively correlated with a [Pearson’s correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) of -0.61. How would this affect our PDPs?
 
-![alt text](pdp-4.png)
+![alt text](2020-08-29_figures/pdp-4.png)
 
 Let’s consider the RM feature as an example FOI. When we construct the RM PDP, we are replacing every value of RM with a value from the sequence between min(RM) and max(RM). At high values of LSTAT, high values of RM are not observed, which means as we progress through the RM sequence we will eventually create combinations of RM and LSTAT that are not logical for the feature set and thereby making predictions on values that do not occur in our training data. This book section explains the problem clearly by using correlations between height and weight as an example. In short, you wouldn’t expect someone who is 6 ft tall to weigh 50 lbs, but the PDP algorithm makes no such distinction.
 
 How can we get around this problem? In this case, you could use a two dimensional PDP plot and examine only the values that overlap with the correlation. Below is the 2D PDP plot of LSTAT and RM constructed using the scikit-learn plot_partial_dependence() function. If we don’t think critically about our data we could make the assumption that RM has a greater effect than LSTAT as seen by the right hand side of the graph.
 
-![Contour lines delineate breaks in the predicted median home value distribution. Warmer colors correspond to higher median home value.](pdp-5.png)
+![Contour lines delineate breaks in the predicted median home value distribution. Warmer colors correspond to higher median home value.](2020-08-29_figures/pdp-5.png)
 
 However, if we overlay the scatter between the LSTAT and RM datapoints, we can see that the near-vertical contour lines on the right hand side of the graph are not represented in our training set. There are no datapoints at high RM and high LSTAT. We should only consider the model partial response in the section that overlaps with the datapoints. From here, we can determine that housing price increases when the number of rooms increases and when the percent of lower status population declines, with the nonlinear patterns still well represented. If you are interested in doing this more formally, you could unpack the output from the plot_partial_dependence function and only plot the values that occur within the 95% range of the two dimensional feature distributions.
 
-![alt text](pdp-7.png)
+![alt text](2020-08-29_figures/pdp-6.png)
 
 ****
 
