@@ -14,20 +14,32 @@
             /* REMOVED: background-color and color - THESE ARE NOW ON THE <body> TAG BELOW */
          }
 
+        /* Refined .blog-content styles for Markdown-rendered content */
         .blog-content h1 {
-            @apply text-3xl font-bold mt-6 mb-4 text-blue-900 dark:text-blue-300;
+            /* Using a slightly larger heading for main post title if it's within content (though page.title handles main h1) */
+            @apply text-3xl sm:text-4xl font-extrabold mt-8 mb-4 text-blue-100 dark:text-teal-300;
         }
         .blog-content h2 {
-            @apply text-2xl font-semibold mt-5 mb-3 text-blue-800 dark:text-blue-200;
+            @apply text-2xl sm:text-3xl font-bold mt-7 mb-3 text-blue-200 dark:text-teal-400;
         }
         .blog-content h3 {
-            @apply text-xl font-medium mt-4 mb-2 text-blue-700 dark:text-blue-100;
+            @apply text-xl sm:text-2xl font-semibold mt-6 mb-2 text-blue-300 dark:text-teal-400;
         }
+        .blog-content h4 {
+            @apply text-lg sm:text-xl font-semibold mt-5 mb-2 text-blue-400 dark:text-blue-200;
+        }
+        .blog-content h5 {
+            @apply text-base sm:text-lg font-semibold mt-4 mb-1 text-blue-500 dark:text-blue-300;
+        }
+        .blog-content h6 {
+            @apply text-sm sm:text-base font-semibold mt-3 mb-1 text-blue-600 dark:text-blue-400;
+        }
+
         .blog-content p {
-            @apply mb-4 leading-relaxed;
+            @apply mb-4 leading-relaxed text-gray-300; /* Ensure consistent text color and line height */
         }
         .blog-content ul, .blog-content ol {
-            @apply list-inside mb-4 pl-5;
+            @apply mb-4 pl-6; /* Increase left padding for lists */
         }
         .blog-content ul {
             @apply list-disc;
@@ -36,19 +48,53 @@
             @apply list-decimal;
         }
         .blog-content li {
-            @apply mb-2;
+            @apply mb-2 text-gray-300; /* Apply text color to list items */
         }
         .blog-content a {
-            @apply text-teal-600 hover:underline dark:text-teal-400;
+            @apply text-teal-500 hover:underline dark:text-teal-400; /* Consistent link color */
+        }
+        .blog-content strong {
+            @apply font-bold text-gray-100; /* Make strong text stand out more */
+        }
+        .blog-content em {
+            @apply italic text-gray-200; /* Ensure italic text is clear */
+        }
+        .blog-content hr {
+            @apply border-t border-slate-700 my-8; /* Style horizontal rules */
         }
         .blog-content pre {
-            @apply bg-blue-50 p-4 rounded-lg overflow-x-auto my-4 border border-blue-100 dark:bg-slate-700 dark:border-slate-600;
+            /* Adjust padding and spacing for code blocks */
+            @apply bg-slate-700 p-4 rounded-lg overflow-x-auto my-6 border border-slate-600 text-sm;
         }
         .blog-content code {
-            @apply font-mono text-sm dark:text-slate-200;
+            /* Styles for inline code */
+            @apply font-mono text-xs text-teal-300 bg-slate-600 px-1 py-0.5 rounded;
+        }
+        .blog-content pre code {
+            /* Overwrite for code within pre (block code) */
+            @apply bg-transparent p-0 rounded-none text-base text-slate-200;
         }
         .blog-content blockquote {
-            @apply border-l-4 border-teal-500 pl-4 py-2 italic text-gray-600 dark:border-teal-400 dark:text-gray-400;
+            /* Refined blockquote styling */
+            @apply border-l-4 border-teal-500 pl-4 py-2 italic text-gray-400 my-6;
+        }
+        .blog-content img {
+            @apply max-w-full h-auto rounded-lg my-6 mx-auto block shadow-md; /* Responsive images, centered with margin */
+        }
+        .blog-content table {
+            @apply w-full border-collapse my-6;
+        }
+        .blog-content th, .blog-content td {
+            @apply border border-slate-600 px-4 py-2 text-left;
+        }
+        .blog-content th {
+            @apply bg-slate-700 text-gray-100 font-semibold;
+        }
+        .blog-content ol li::marker {
+            color: theme('colors.teal.400'); /* Style list markers */
+        }
+        .blog-content ul li::marker {
+            color: theme('colors.teal.400'); /* Style list markers */
         }
 
     </style>
