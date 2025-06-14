@@ -22,8 +22,16 @@ title: My Data Science Blog
                         {% if post.author %}
                         by {{ post.author }}
                         {% endif %}
+                    <br>
+                        {% if post.categories %}
+                            {% for category in post.categories %}
+                                <span class="inline-block bg-slate-700 text-gray-300 rounded-full px-3 py-1 text-xs font-semibold mr-2 mt-2">
+                                    {{ category }}
+                                </span>
+                            {% endfor %}
+                        {% endif %}
                     </p>
-                    <div class="blog-content prose max-w-none">
+                    <div class="blog-content max-w-none">
                         {{ post.excerpt | default: post.content | markdownify | strip_html | truncatewords: 50 }}
                         <a href="{{ post.url | relative_url }}" class="hover:underline inline-block mt-2 text-teal-400">Read more &rarr;</a>
                     </div>
