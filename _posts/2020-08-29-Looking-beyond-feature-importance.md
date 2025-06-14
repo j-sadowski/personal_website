@@ -1,3 +1,11 @@
+---
+layout: post
+title: Looking Beyond Feature Importance
+date: 2020-08-29 10:00:00 -0500
+categories: [data-science]
+author: Jason Sadowski
+---
+
 # Looking Beyond Feature Importance
 ## How to use Partial Dependence Plots in Python
 

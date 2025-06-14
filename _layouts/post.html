@@ -2,24 +2,49 @@
 layout: default
 ---
 
-<section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-blue-100 mb-8">
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-4 text-center">
-        {{ page.title }}
-    </h1>
-    <p class="text-sm text-gray-500 mb-6 text-center">
-        Published: {{ page.date | date: "%B %d, %Y" }}
-        {% if page.author %}
-        by {{ page.author }}
-        {% endif %}
-    </p>
+<!-- Individual Blog Post Content -->
+<article class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg border border-slate-700 mb-8">
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-teal-400 mb-2">
+            {{ page.title }}
+        </h1>
+        <p class="text-sm text-gray-400">
+            Published: {{ page.date | date: "%B %d, %Y" }}
+            {% if page.author %}
+            by <span class="text-teal-300">{{ page.author }}</span>
+            {% endif %}
+            {% if page.categories %}
+            <br>
+            Categories:
+            {% for category in page.categories %}
+                <span class="inline-block bg-slate-700 text-gray-300 rounded-full px-3 py-1 text-xs font-semibold mr-2 mt-2">
+                    {{ category }}
+                </span>
+            {% endfor %}
+            {% endif %}
+        </p>
+    </header>
 
-    <div class="blog-content prose lg:prose-lg max-w-3xl mx-auto text-gray-700 leading-relaxed">
-        {{ content }} {# This is where the Markdown content of the blog post will be injected #}
+    <div class="prose lg:prose-lg max-w-none mx-auto text-gray-300 leading-relaxed blog-post-content">
+        <!-- This is where the Markdown content of your post will be rendered -->
+        {{ content }}
     </div>
 
-    <div class="mt-8 text-center">
-        <a href="{{ site.baseurl }}/blog.html" class="inline-flex items-center px-4 py-2 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition duration-300 shadow-md">
-            &larr; Back to Blog Posts
+    <!-- Optional: Add navigation links to previous/next post -->
+    <div class="mt-8 pt-6 border-t border-slate-700 flex justify-between text-teal-400">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" class="hover:underline flex items-center">
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            {{ page.previous.title }}
         </a>
+        {% else %}
+        <div></div>
+        {% endif %}
+        {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" class="hover:underline flex items-center">
+            {{ page.next.title }}
+            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        </a>
+        {% endif %}
     </div>
-</section>
+</article>
