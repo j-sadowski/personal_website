@@ -6,7 +6,7 @@ categories: [data-science]
 author: Jason Sadowski
 ---
 
-## How to use Partial Dependence Plots in Python
+## How to use Partial Dependence Plots in Python
 
 Many articles discuss how to use feature importance for selecting features and analyzing your machine learning model. What happens when you have selected your important features and rerun your model? Feature importance is incredibly useful for understanding what is driving our model, but it does not tell us how that feature is related to the model predictions. This article covers how to step beyond feature importance and use plotting methods to gain a deeper understanding of how the features in your models are driving model predictions.
 
@@ -23,9 +23,9 @@ Now the question remains, where do we go from here?
 You can tell from my earlier articles that I am a big fan of using plots and visualizations to understand relationships in my data. In most cases, visual inspection methods are applicable across a wide range of data distributions and methods. For machine learning, one of the most straightforward ways to determine the relationship of features with the response variables is with a partial dependence plot (PDP).
 Constructing a PDP is pretty intuitive:
 Select your feature of interest (FOI)
-For continuous FOIs: 
+For continuous FOIs: 
 - Create a sequence ranging from the minimum to the maximum of the feature
-For categorical FOIS: 
+For categorical FOIS: 
 - Create a dummy variable for each level (n-1) in your categorical feature
 Replace every value in your FOI with a value from your sequence.
 Get the predictions from this new feature set and average over all the predictions. Store that average in a vector.
@@ -38,7 +38,7 @@ In the rest of this article, I will show you how to construct PDPs and how to in
 ****
 
 ### One dimensional Partial Dependence Plots
-#### Read in and split the Data
+#### Read in and split the Data
 For this analysis, I'll be doing a random forest regression using the Boston Housing Dataset in the scikit-learn package.
 
 ```
