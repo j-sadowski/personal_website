@@ -31,7 +31,7 @@ title: My Data Science Blog
                             {% endfor %}
                         {% endif %}
                     </p>
-                    <div class="blog-content prose max-w-none">
+                    <div class="blog-content max-w-none">
                         {{ post.excerpt | default: post.content | markdownify | strip_html | truncatewords: 50 }}
                         <a href="{{ post.url | relative_url }}" class="hover:underline inline-block mt-2 text-teal-400">Read more &rarr;</a>
                     </div>
