@@ -20,11 +20,17 @@ The multiple identification problem takes a little more explanation. Many stores
 Before delving into my project, I want to set the stage and discuss what the raw models of occupancy look like. All of this data was collected from a cosmetics store in California.
 
 First, in order to understand how well CV estimates store occupancy, I needed a true value of store occupancy. BotS constructed this true value from the raw surveillance camera footage used for track construction and counted the number of people in the store at 10-minute intervals.
-![alt text]({{ '/assets/blog_post_figures/2019-10-03/bots.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-10-03/bots.png' | relative_url }}" alt="Ground truth store occupancy measured at 10-minute intervals">
+  <figcaption class="figure-caption">Figure 1: Ground truth store occupancy measured at 10-minute intervals.</figcaption>
+</figure>
 
 Then one of the BotS data scientists created an occupancy time-series model of the raw computer vision data alone.
 
-![alt text]({{ '/assets/blog_post_figures/2019-10-03/bots-1.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-10-03/bots-1.png' | relative_url }}" alt="Raw computer vision model of store occupancy">
+  <figcaption class="figure-caption">Figure 2: Raw computer vision model of store occupancy.</figcaption>
+</figure>
 
 We can see from the figure above that the raw CV model underpredicts occupancy in some areas and overpredicts in others. The recall and precision of this model are 0.793 and 0.793 (respectively). I set out to use algorithmic methods to increase both the precision the recall of this model. I expected that my algorithms would reduce false positives by removing the duplicated tracks, and reduce false negatives by stitching tracks together during periods of time where no track existed previously (due to track instability).
 
@@ -45,8 +51,10 @@ $$
 
 The advantage of using this formula is that it penalizes for both longer distances and longer time gaps. Any track that minimized the spacetime distance was then considered to be the final candidate track. Once I had the final candidate track, I linearly interpolated from the last point of the focal track to the first point of the final candidate track. Then I assigned all of the tracks the same ID as the focal track.
 
-![Two tracks that I identified as belonging to the same track and identified for future stitching. The green track is the focal track and the blue track is the candidate track]({{ '/assets/blog_post_figures/2019-10-03/tracks1.gif?raw=True' | relative_url }}){width=720 height=428}
-
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-10-03/tracks1.gif?raw=True' | relative_url }}" alt="Two tracks identified as belonging to the same track and identified for future stitching. The green track is the focal track and the blue track is the candidate track" width="720" height="428">
+  <figcaption class="figure-caption">Figure 3: Two tracks identified as belonging to the same track for future stitching. The green track is the focal track and the blue track is the candidate track.</figcaption>
+</figure>
 
 *Seeing double*
 
@@ -58,7 +66,10 @@ The first step was to figure out which tracks were overlapping in time, since I 
 
 For each overlapping track taken from a different camera, I calculated the Euclidean distance between each of the overlapping points in the focal and the comparison track. Then I calculated the average distance across both of the tracks. I considered comparison tracks that had an average distance of 0.8 m or less to be equivalent to the focal track. I estimated this distance as the approximate projection error between the different cameras.
 
-![Three tracks that have an average distance of less than 0.8m along their overlap in time]({{ '/assets/blog_post_figures/2019-10-03/tracks2.gif?raw=True' | relative_url }}){width=720 height=428}
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-10-03/tracks2.gif?raw=True' | relative_url }}" alt="Three tracks that have an average distance of less than 0.8m along their overlap in time" width="720" height="428">
+  <figcaption class="figure-caption">Figure 4: Three tracks with an average distance of less than 0.8m along their overlap in time.</figcaption>
+</figure>
 
 More than one overlapping track could be flagged as the same, when this was the case, I set a decision rule to pick the longest track. While we may lose some information from the other tracks, the longest tracks will have the greatest information needed for the occupancy models.
 
@@ -68,11 +79,17 @@ What impact did these processing steps have? Recall that BotS is ultimately inte
 
 I calculated the expected occupancy of the store at each time step in my dataset by summing the number of tracks in a 5 minute window centered on the ground truth time point.
 
-![Time series of ground truth (blue), raw CV data (orange), and my processed output (green).]({{ '/assets/blog_post_figures/2019-10-03/bots-3.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-10-03/bots-3.png' | relative_url }}" alt="Time series of ground truth (blue), raw CV data (orange), and my processed output (green).">
+  <figcaption class="figure-caption">Figure 5: Time series of ground truth (blue), raw CV data (orange), and processed output (green).</figcaption>
+</figure>
 
 It is a little difficult to pull out the exact trends of my processed output versus the raw computer vision model. So I also plotted the difference of each from the ground-truth.
 
-![Time series of the difference between the calculated occupancy from the ground truth. Positive values represent areas where the models overpredicted, negative values represent underprediction.]({{ '/assets/blog_post_figures/2019-10-03/bots-4.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-10-03/bots-4.png' | relative_url }}" alt="Time series of the difference between the calculated occupancy from the ground truth. Positive values represent areas where the models overpredicted, negative values represent underprediction.">
+  <figcaption class="figure-caption">Figure 6: Time series of the difference between calculated occupancy from the ground truth. Positive values indicate overprediction, negative values indicate underprediction.</figcaption>
+</figure>
 
 Here I can more clearly see the impact of my processed model compared to the raw CV occupancy model. The areas where the raw output tends to underpredict relative to the ground truth my processed model tends to overpredict. This result is reflected in the precision and recall of my model, 0.734 and 0.834 respectively. So while, I reduced the incidence of false negatives in my model, I increased the incidence of false positives. Therefore, I think what could work well for BotS is to create an ensemble prediction model using both the raw CV output and my processed model. By doing so, the areas where my model is more likely to overpredict would be balanced by where the raw model is more likely to underpredict, and vice versa.
 
