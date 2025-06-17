@@ -218,3 +218,23 @@ body {
     margin-bottom: 1.5rem; /* Margin below to separate from next content */
     font-style: italic; /* Optional: Make it italic */
 }
+
+/* Styles for figure captions */
+.figure-caption {
+    text-align: center; /* Center the caption */
+    font-size: 0.875rem; /* text-sm equivalent from Tailwind */
+    color: #9CA3AF; /* text-gray-400 equivalent */
+    margin-top: 0.5rem; /* Small margin above the caption */
+    margin-bottom: 1.5rem; /* Margin below to separate from next content */
+    font-style: italic; /* Optional: Make it italic */
+}
+
+/* Optional: Basic styling for the figure element itself */
+figure {
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Ensures centering */
+    margin-top: 2rem; /* Add some spacing above the figure */
+    margin-bottom: 2rem; /* Add some spacing below the figure */
+    max-width: 100%; /* Ensure figure doesn't overflow */
+}
