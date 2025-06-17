@@ -97,12 +97,17 @@ def assign_treatments(df, experiment_size, seed  = 42, level = 0):
     return(workdf)
 ```
 At the end of this process we get a dataframe that looks like this:
-![alt text]({{ '/assets/blog_post_figures/2019-12-12/strat.png' | relative_url }})
-
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-12-12/strat.png' | relative_url }}" alt="Simulated raw data for City and Town populations">
+  <figcaption class="figure-caption">Figure 1: Simulated raw data for City and Town populations.</figcaption>
+</figure>
 I’ve added a column for the assigned treatment as well as columns for each dummy variable. The dummy variable columns will make synthesizing the response variable easier.
 
 How many of each city category was assigned to each treatment?
-![alt text](image-1.png)
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-12-12/start-1.png' | relative_url }}" alt="Bar chart of city category by treatment">
+  <figcaption class="figure-caption">Figure 2: Bar chart of city category by treatment.</figcaption>
+</figure>
 
 Right off the bat we can see some concerns. The Town category is very undersampled relative to the City category (as we expected based off of their abundance in the population). More importantly, there is almost double the Town individuals in Treatment B than in Treatment A. If Town individuals are very different from City individuals, this could be a real problem. (Hint: It will be a problem here.)
 
@@ -134,7 +139,10 @@ stats.ttest_ind(responseA, responseB)
 ```
 Running this code gives us a t-statistic of -0.90 and a p-value of 0.37. Not great. If we plot the data we can get an idea of what’s going on.
 
-![alt text](image-2.png)
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-12-12/strat-2.png' | relative_url }}" alt="Results of A/B test without accounting for stratification">
+  <figcaption class="figure-caption">Figure 3: Results of A/B test without accounting for stratification.</figcaption>
+</figure>
 ***
 
 ## Stratified Sampling Experiment & Analysis
@@ -185,7 +193,10 @@ The two-way ANOVA is estimating how much each of the variables (treatment and re
 
 If we look at the plot, we can see why an ANOVA performs so well.
 
-![alt text](image-3.png)
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-12-12/strat-3.png' | relative_url }}" alt="ANOVA results by population type">
+  <figcaption class="figure-caption">Figure 4: ANOVA results by population type.</figcaption>
+</figure>
 
 Because we increased the power of our analysis using the stratified random sampling, our initial sample size calculations would be different between a stratified random sampling and a complete random sampling procedure. I will not go into this in depth here, but essentially our estimates of the variance of each population changes when we go from complete random sampling to stratified random sampling.
 

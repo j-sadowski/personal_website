@@ -38,7 +38,10 @@ mtcars = data('mtcars')
 mtcars.head()
 ```
 
-![alt text]({{ '/assets/blog_post_figures/2019-11-20/linear.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-11-20/linear.png' | relative_url }}" alt="Head of the mtcars dataset">
+  <figcaption class="figure-caption">Table 1: Head of the `mtcars` dataset.</figcaption>
+</figure>
 
 The documentation for this dataset can be accessed via the command:
 
@@ -57,7 +60,10 @@ results = model.fit()
 print(results.summary())
 ```
 
-![alt text]({{ '/assets/blog_post_figures/2019-11-20/linear-1.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-11-20/linear-1.png' | relative_url }}" alt="Summary of the OLS regression results">
+  <figcaption class="figure-caption">Table 2: Summary of the OLS regression results.</figcaption>
+</figure>
 
 The amount of variance explained by the model is pretty high (R^2 = 0.83), and both cyl and wt are negative and significant, supporting my initial hypothesis. There is plenty to unpack in this OLS output, but for this post I’m not going to explore all of the outputs nor discuss statistical significance/non-significance. This post is all about constructing the outlier detection and assumption check plots so common in base R.
 
@@ -89,7 +95,10 @@ for i in top3.index:
 
 plt.show()
 ```
-![alt text]({{ '/assets/blog_post_figures/2019-11-20/linear-2.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-11-20/linear-2.png' | relative_url }}" alt="Residuals vs. Fitted Values plot">
+  <figcaption class="figure-caption">Figure 1: Residuals vs. Fitted Values plot.</figcaption>
+</figure>
 
 In this case there may be a slight nonlinear structure in the residuals, and probably worth testing other models. The Fiat 128, Toyota Corolla, and Toyota Corona could be outliers in the dataset, but it’s worth further exploration.
 
@@ -119,8 +128,10 @@ for val in top3.index:
     ax.annotate(val,xy=(df['theoretical_quantiles'].loc[val],df['sorted_student_residuals'].loc[val]))
 plt.show()
 ```
-
-![alt text]({{ '/assets/blog_post_figures/2019-11-20/linear-3.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-11-20/linear-3.png' | relative_url }}" alt="Normal Q-Q Plot of Standardized Residuals">
+  <figcaption class="figure-caption">Figure 2: Normal Q-Q Plot of Standardized Residuals.</figcaption>
+</figure>
 
 Here we can see that the residuals all generally follow the 1:1 line indicating that they probably come from a normal distribution. While difficult to read (just like in base R, ah the memories) Fiat 128, Toyota Corolla, and Chrysler Imperial stand out as both the largest magnitude in studentized residuals as and also appear to deviate from the theoretical quantile line.
 
@@ -144,7 +155,10 @@ for i in top3.index:
     ax.annotate(i,xy=(fitted[i],sqrt_student_residuals[i]))
 plt.show()
 ```
-![alt text]({{ '/assets/blog_post_figures/2019-11-20/linear-4.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-11-20/linear-4.png' | relative_url }}" alt="Scale-Location Plot of the Square Root of Absolute Studentized Residuals vs. Fitted Values">
+  <figcaption class="figure-caption">Figure 3: Scale-Location Plot of the Square Root of Absolute Studentized Residuals vs. Fitted Values.</figcaption>
+</figure>
 
 In this case there appears to be an upward trend in the lowess smoother. This could be indicative of heteroskedasticity. This heteroskedasticity would probably be worse if I removed the Chrysler Imperial point, so this assumption could be violated in our model.
 
@@ -196,7 +210,10 @@ ax.annotate('0.5', xy = (xpos, negcooks05y[-1]), color = 'r')
 ax.legend()
 plt.show()
 ```
-![alt text]({{ '/assets/blog_post_figures/2019-11-20/linear-5.png' | relative_url }})
+<figure>
+  <img src="{{ '/assets/blog_post_figures/2019-11-20/linear-5.png' | relative_url }}" alt="Residuals vs. Leverage Plot">
+  <figcaption class="figure-caption">Figure 4: Residuals vs. Leverage Plot.</figcaption>
+</figure>
 
 There is some evidence in this plot that the Chrysler Imperial has an unusually large effect on the model. Which makes sense given that it’s an outlier at the minimum edge of the possible range of fitted-values.
 
