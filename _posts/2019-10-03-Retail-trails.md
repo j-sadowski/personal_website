@@ -36,12 +36,16 @@ Instead, I began subsetting the possible candidate tracks. First, I incorporated
 
 After whittling down the potential candidate dataset using the process above, I conducted pairwise comparisons for each focal/candidate track pair. For each pair, I calculated the spacetime distance between the last point of the focal track and the first point of the candidate track. Spacetime distance sounds like a fancy concept, but really it is a three dimensional distance formula with the third dimension being time.
 
-![Equation 1: Spacetime distance formula given the differences in x-coordinates (x), y-coordinates (y) and time (t)]({{ '/assets/blog_post_figures/2019-10-03/bots-2.png' | relative_url }})
-
+```
+$$
+$\sqrt{$\Delta x + $\Delta y + $\Delta t}$
+$$
+```
+Equation 1: Spacetime distance formula given the differences in x-coordinates (x), y-coordinates (y) and time (t)
 
 The advantage of using this formula is that it penalizes for both longer distances and longer time gaps. Any track that minimized the spacetime distance was then considered to be the final candidate track. Once I had the final candidate track, I linearly interpolated from the last point of the focal track to the first point of the final candidate track. Then I assigned all of the tracks the same ID as the focal track.
 
-![Two tracks that I identified as belonging to the same track and identified for future stitching. The green track is the focal track and the blue track is the candidate track]({{ '/assets/blog_post_figures/2019-10-03/tracks1.gif' | relative_url }})
+![Two tracks that I identified as belonging to the same track and identified for future stitching. The green track is the focal track and the blue track is the candidate track]({{ '/assets/blog_post_figures/2019-10-03/tracks1.gif?raw=True' | relative_url }})
 
 *Seeing double*
 
@@ -53,7 +57,7 @@ The first step was to figure out which tracks were overlapping in time, since I 
 
 For each overlapping track taken from a different camera, I calculated the Euclidean distance between each of the overlapping points in the focal and the comparison track. Then I calculated the average distance across both of the tracks. I considered comparison tracks that had an average distance of 0.8 m or less to be equivalent to the focal track. I estimated this distance as the approximate projection error between the different cameras.
 
-![Three tracks that have an average distance of less than 0.8m along their overlap in time]({{ '/assets/blog_post_figures/2019-10-03/tracks2.gift' | relative_url }})
+![Three tracks that have an average distance of less than 0.8m along their overlap in time]({{ '/assets/blog_post_figures/2019-10-03/tracks2.gif?raw=True' | relative_url }})
 
 More than one overlapping track could be flagged as the same, when this was the case, I set a decision rule to pick the longest track. While we may lose some information from the other tracks, the longest tracks will have the greatest information needed for the occupancy models.
 
