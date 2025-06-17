@@ -8,6 +8,13 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title:output_ext
+    sort_by: date
+    sort_order: descending 
+
 markdown: kramdown
 highlighter: rouge
 kramdown:
