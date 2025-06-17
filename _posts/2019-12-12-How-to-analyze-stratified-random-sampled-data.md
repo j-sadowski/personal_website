@@ -5,6 +5,8 @@ date: 2019-12-12 10:00:00 -0500
 categories: [data-science]
 author: Jason Sadowski
 ---
+Note: This post was originally published on [medium](https://medium.com/data-science/how-to-analyze-stratified-random-sampled-data-e3933199ae74).
+
 
 When constructing an experiment, one of the most important questions to ask is: How should I sample from my population? Clearly you want to conduct some sort of random sampling procedure, but exactly how the random sampling is done can have a large impact on your analysis. While there are many useful guides on how to conduct [stratified random sampling](https://en.wikipedia.org/wiki/Stratified_sampling), I’ve noticed that there are few guidelines on how to correctly analyze your stratified sampled data. In this article, I’m going to discuss how to conduct stratified sampling and how to analyze the resultant data using some simulated data as an example.  
 
@@ -95,7 +97,7 @@ def assign_treatments(df, experiment_size, seed  = 42, level = 0):
     return(workdf)
 ```
 At the end of this process we get a dataframe that looks like this:
-![alt text](image.png)
+![alt text]({{ '/assets/blog_post_figures/2019-12-12/strat.png' | relative_url }})
 
 I’ve added a column for the assigned treatment as well as columns for each dummy variable. The dummy variable columns will make synthesizing the response variable easier.
 
@@ -197,6 +199,6 @@ Overall, stratified random sampling increases the power of your analysis. In the
 I hope that helps with your stratified random sampling needs! I’ve added the Jupyter notebook where I conducted this analysis and a similar R script to my GitHub [repository](https://github.com/j-sadowski/FromRtoPython). Here are some links for further reading on ANOVAs and stratified random sampling:
 
 - There are a many articles online that go over the different types of sampling methodologies. See [here](https://medium.com/analytics-vidhya/sampling-methods-6c6e21773a1c), [here](https://towardsdatascience.com/sampling-techniques-a4e34111d808), or [here](https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/sampling-in-statistics/).
-- This course from Penn State goes much deeper into the statistics of stratified random sampling.
+- This course from Penn State goes much deeper into the statistics of stratified random sampling (This course is now unavailable JSS 2025-06-16).
 - Examples of how to conduct an ANOVA on the iris dataset in R and in [Python](https://www.marsja.se/four-ways-to-conduct-one-way-anovas-using-python/).
 - How to conduct a power analysis using traditional [methods](https://www.evanmiller.org/ab-testing/sample-size.html), and using simulated data.

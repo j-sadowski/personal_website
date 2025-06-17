@@ -5,6 +5,7 @@ date: 2020-08-29 10:00:00 -0500
 categories: [data-science]
 author: Jason Sadowski
 ---
+Note: This post was originally published on [medium](https://medium.com/data-science/looking-beyond-feature-importance-37d2807aaaa7).
 
 ## How to use Partial Dependence Plots in Python
 
