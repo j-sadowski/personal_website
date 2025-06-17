@@ -8,6 +8,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']], // Inline math delimiters
+          displayMath: [['$$', '$$'], ['\\[', '\\]']], // Display math delimiters
+          processEscapes: true, // Process escaped characters like \$
+          processEnvironments: true // Process LaTeX environments (e.g., \begin{align}...)
+        },
+        options: {
+          // These options help MathJax work nicely with Markdown
+          // 'skipHtmlTags' prevents MathJax from processing math within these tags.
+          // 'ignoreHtmlClass' and 'processHtmlClass' can be used to control processing
+          // for specific HTML elements if needed, but for general use with markdown,
+          // the default processing of the body is usually sufficient.
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          // For Jekyll, it's often good practice to ensure MathJax processes the content
+          // *after* Markdown has rendered, which it usually does by default.
+        },
+        loader: {
+            load: ['[tex]/ams'] // Load ams package for common symbols/environments
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 </head>
 <body class="flex flex-col min-h-screen bg-slate-900 text-gray-200">
     {% include header_nav.html %}
