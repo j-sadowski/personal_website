@@ -42,8 +42,10 @@ Instead, I began subsetting the possible candidate tracks. First, I incorporated
 
 After whittling down the potential candidate dataset using the process above, I conducted pairwise comparisons for each focal/candidate track pair. For each pair, I calculated the spacetime distance between the last point of the focal track and the first point of the candidate track. Spacetime distance sounds like a fancy concept, but really it is a three dimensional distance formula with the third dimension being time.
 
-$$\sqrt{\Delta x + \Delta y + \Delta t}$$
-<p class="math-caption">Equation 1: Spacetime distance formula given the differences in x-coordinates (x), y-coordinates (y) and time (t).</p>
+<div class="text-center">
+  $$\sqrt{\Delta x + \Delta y + \Delta t}$$
+  <p class="math-caption">Equation 1: Spacetime distance formula given the differences in x-coordinates (x), y-coordinates (y) and time (t).</p>
+</div>
 
 The advantage of using this formula is that it penalizes for both longer distances and longer time gaps. Any track that minimized the spacetime distance was then considered to be the final candidate track. Once I had the final candidate track, I linearly interpolated from the last point of the focal track to the first point of the final candidate track. Then I assigned all of the tracks the same ID as the focal track.
 
