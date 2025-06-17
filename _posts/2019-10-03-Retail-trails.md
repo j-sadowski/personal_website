@@ -45,7 +45,8 @@ $$
 
 The advantage of using this formula is that it penalizes for both longer distances and longer time gaps. Any track that minimized the spacetime distance was then considered to be the final candidate track. Once I had the final candidate track, I linearly interpolated from the last point of the focal track to the first point of the final candidate track. Then I assigned all of the tracks the same ID as the focal track.
 
-![Two tracks that I identified as belonging to the same track and identified for future stitching. The green track is the focal track and the blue track is the candidate track]({{ '/assets/blog_post_figures/2019-10-03/tracks1.gif?raw=True' | relative_url }})
+![Two tracks that I identified as belonging to the same track and identified for future stitching. The green track is the focal track and the blue track is the candidate track]({{ '/assets/blog_post_figures/2019-10-03/tracks1.gif?raw=True' | relative_url }}){width=720 height=428}
+
 
 *Seeing double*
 
@@ -57,7 +58,7 @@ The first step was to figure out which tracks were overlapping in time, since I 
 
 For each overlapping track taken from a different camera, I calculated the Euclidean distance between each of the overlapping points in the focal and the comparison track. Then I calculated the average distance across both of the tracks. I considered comparison tracks that had an average distance of 0.8 m or less to be equivalent to the focal track. I estimated this distance as the approximate projection error between the different cameras.
 
-![Three tracks that have an average distance of less than 0.8m along their overlap in time]({{ '/assets/blog_post_figures/2019-10-03/tracks2.gif?raw=True' | relative_url }})
+![Three tracks that have an average distance of less than 0.8m along their overlap in time]({{ '/assets/blog_post_figures/2019-10-03/tracks2.gif?raw=True' | relative_url }}){width=720 height=428}
 
 More than one overlapping track could be flagged as the same, when this was the case, I set a decision rule to pick the longest track. While we may lose some information from the other tracks, the longest tracks will have the greatest information needed for the occupancy models.
 
