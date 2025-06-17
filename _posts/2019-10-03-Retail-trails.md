@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Retail trails: Using spatial data to elevate retail
+title: Retail trails - Using spatial data to elevate retail
 date: 2019-10-03 10:00:00 -0500
 categories: [data-science]
 author: Jason Sadowski
