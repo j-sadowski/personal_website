@@ -38,10 +38,10 @@ After whittling down the potential candidate dataset using the process above, I 
 
 ```
 $$
-$\sqrt{$\Delta x + $\Delta y + $\Delta t}$
+\sqrt{\Delta x + \Delta y + \Delta t}
 $$
 ```
-Equation 1: Spacetime distance formula given the differences in x-coordinates (x), y-coordinates (y) and time (t)
+<p class="math-caption">Equation 1: Spacetime distance formula given the differences in x-coordinates (x), y-coordinates (y) and time (t).</p>
 
 The advantage of using this formula is that it penalizes for both longer distances and longer time gaps. Any track that minimized the spacetime distance was then considered to be the final candidate track. Once I had the final candidate track, I linearly interpolated from the last point of the focal track to the first point of the final candidate track. Then I assigned all of the tracks the same ID as the focal track.
 
