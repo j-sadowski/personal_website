@@ -118,7 +118,7 @@ The reduced model predicts the test set well enough for our analysis, with an RÂ
 If you examine the feature importance here you see a similar pattern as before with RM at the highest followed by LSTAT and then DIS. Again, the variance in feature importance for RM and LSTAT appears as though the effect of the two features are not statistically distinct.
 
 <figure>
-  <img src="{{ '/assets/blog_post_figures/2020-08-29/pdp_1.png' | relative_url }}" alt="Feature importance of number of rooms, distance from employer, and % lower status">
+  <img src="{{ '/assets/blog_post_figures/2020-08-29/pdp-1.png' | relative_url }}" alt="Feature importance of number of rooms, distance from employer, and % lower status">
   <figcaption class="figure-caption">Figure 2: Feature importance of number of rooms, distance from employer, and % lower status. The height of the bars represent the mean feature importance and the error bars are one standard deviation from the mean for each feature. </figcaption>
 </figure>
 
@@ -165,7 +165,7 @@ Two things to note about the sklearn functions. The default grid in the sklearn 
 Letâ€™s examine what our partial dependence patterns look like in our model. Each of the plots will have a line representing the partial dependence (the mean response of the model when all feature values are set to one value) and a [rug plot](https://en.wikipedia.org/wiki/Rug_plot) along the bottom.
 
 <figure>
-  <img src="{{ '/assets/blog_post_figures/2020-08-29/pdp_2.png' | relative_url }}" alt="Partial Dependence Plot of house price by distance to employment">
+  <img src="{{ '/assets/blog_post_figures/2020-08-29/pdp-2.png' | relative_url }}" alt="Partial Dependence Plot of house price by distance to employment">
   <figcaption class="figure-caption">Figure 3: Partial Dependence Plot of house price by  distance to employment.</figcaption>
 </figure>
 
@@ -173,7 +173,7 @@ The distance to the Boston employment centers only has an effect on housing valu
 
 
 <figure>
-  <img src="{{ '/assets/blog_post_figures/2020-08-29/pdp_3.png' | relative_url }}" alt="Partial Dependence Plot of house price by percent lower status">
+  <img src="{{ '/assets/blog_post_figures/2020-08-29/pdp-3.png' | relative_url }}" alt="Partial Dependence Plot of house price by percent lower status">
   <figcaption class="figure-caption">Figure 4: Partial Dependence Plot of house price by percent lower status.</figcaption>
 </figure>
 
