@@ -233,8 +233,8 @@ Thanks for reading. That’s all for now!
 Further Reading
 
 
-[Towards data science article on using linear regression in python](https://towardsdatascience.com/linear-regression-on-boston-housing-dataset-f409b7e4a155)
-[List of useful python datasets](https://github.com/iamaziz/PyDataset)
-[Further R style plots in py thon](https://emredjan.github.io/blog/2017/07/11/emulating-r-plots-in-python/)
-[UVA article on understanding diagnostic plots](https://data.library.virginia.edu/diagnostic-plots/)
-[StackExchange post with good detail on standardized residuals](https://stats.stackexchange.com/questions/52522/standardized-residuals-in-rs-lm-output)
+- [Towards data science article on using linear regression in python](https://towardsdatascience.com/linear-regression-on-boston-housing-dataset-f409b7e4a155)
+- [List of useful python datasets](https://github.com/iamaziz/PyDataset)
+- [Further R style plots in py thon](https://emredjan.github.io/blog/2017/07/11/emulating-r-plots-in-python/)
+- [UVA article on understanding diagnostic plots](https://data.library.virginia.edu/diagnostic-plots/)
+- [StackExchange post with good detail on standardized residuals](https://stats.stackexchange.com/questions/52522/standardized-residuals-in-rs-lm-output)
