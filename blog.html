@@ -10,7 +10,7 @@ title: My Data Science Blog
 
     <div id="blog-posts-container" class="grid grid-cols-1 gap-8">
         {% if site.posts.size > 0 %}
-            {% for post in site.posts reversed %}
+            {% for post in site.posts %}
                 <article class="bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700">
                     <h2 class="text-3xl font-bold text-blue-200">
                         <a href="{{ post.url | relative_url }}" class="hover:underline text-teal-400">
